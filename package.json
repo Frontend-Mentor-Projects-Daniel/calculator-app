@@ -1,0 +1,25 @@
+{
+  "name": "calculator-app",
+  "version": "1.0.0",
+  "description": "![Design preview for the Calculator app coding challenge](./design/desktop-preview.jpg)",
+  "main": "src/js/main.js",
+  "scripts": {
+    "start-tailwind": "npx tailwindcss -i ./src/css/input.css -o ./src/css/output.css --watch",
+    "start-typescript": "tsc --watch",
+    "start": "npm run start-typescript & npm run start-tailwind"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Frontend-Mentor-Projects-Daniel/calculator-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Frontend-Mentor-Projects-Daniel/calculator-app/issues"
+  },
+  "homepage": "https://github.com/Frontend-Mentor-Projects-Daniel/calculator-app#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.2.7"
+  }
+}
