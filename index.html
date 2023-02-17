@@ -11,7 +11,13 @@
       href="./images/favicon-32x32.png"
     />
     <!-- GOOGLE FONTS -->
-
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- font-family: 'League Spartan', sans-serif; -->
     <!-- CSS -->
     <link href="./src/css/output.css" rel="stylesheet" />
 
@@ -30,9 +36,73 @@
       }
     </style>
   </head>
-  <body>
-    <h1 class="text-red-300 text-7xl">Hello Calculator App Project!</h1>
+  <body class="flex flex-col justify-between font-spartan font-bold">
+    <!-- ----------------
+              HEADER 
+      --------------------- -->
+    <header>
+      <h1 class="sr-only">Calculator App</h1>
+    </header>
 
+    <main class="main px-5">
+      <!-- ----------------
+            CALCULATOR 
+      --------------------- -->
+      <div
+        class="flex max-w-lg flex-col bg-slate-500 px-7 pt-14 pb-11 text-slate-100"
+      >
+        <!-- title and theme switcher -->
+        <div class="flex items-center justify-between">
+          <h2 class="text-2xl">calc</h2>
+          <p>theme</p>
+        </div>
+
+        <!-- screen -->
+        <div class="rounded-md bg-slate-700 py-7 pr-5">
+          <p class="ml-auto w-max text-4xl">399,981</p>
+        </div>
+
+        <!-- buttons -->
+        <div class="mt-9 rounded-md bg-slate-600">
+          <div class="btn-group">
+            <button class="btn">7</button>
+            <button class="btn">8</button>
+            <button class="btn">9</button>
+            <button class="btn">DEL</button>
+          </div>
+
+          <div class="btn-group">
+            <button class="btn">4</button>
+            <button class="btn">5</button>
+            <button class="btn">6</button>
+            <button class="btn">+</button>
+          </div>
+
+          <div class="btn-group">
+            <button class="btn">1</button>
+            <button class="btn">2</button>
+            <button class="btn">3</button>
+            <button class="btn">-</button>
+          </div>
+
+          <div class="btn-group">
+            <button class="btn">.</button>
+            <button class="btn">0</button>
+            <button class="btn">/</button>
+            <button class="btn">x</button>
+          </div>
+
+          <div class="btn-group">
+            <button class="btn">RESET</button>
+            <button class="btn">=</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- ----------------
+             FOOTER 
+      --------------------- -->
     <footer class="attribution">
       Challenge by
       <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"

@@ -2,7 +2,11 @@
 module.exports = {
   content: ['index.html', 'src/ts/**/*.ts'],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        spartan: ['League Spartan', 'sans-serif'],
+      },
+    },
   },
-  plugins: [],
+  plugins: [require('autoprefixer')],
 };

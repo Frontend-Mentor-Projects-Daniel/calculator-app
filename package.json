@@ -20,6 +20,9 @@
   },
   "homepage": "https://github.com/Frontend-Mentor-Projects-Daniel/calculator-app#readme",
   "devDependencies": {
+    "autoprefixer": "^10.4.13",
+    "prettier": "^2.8.4",
+    "prettier-plugin-tailwindcss": "^0.2.3",
     "tailwindcss": "^3.2.7"
   }
 }
