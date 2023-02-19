@@ -114,13 +114,14 @@
 
 @layer components {
   .btn-group {
-    @apply flex gap-1;
+    @apply flex flex-wrap justify-between gap-3;
   }
 
   .btn {
-    @apply flex aspect-square items-center rounded-md bg-slate-100 p-6 text-3xl text-slate-600;
+    @apply flex min-w-[4rem] flex-shrink-0 flex-grow basis-16 items-center justify-center rounded-md bg-slate-100 p-4 text-4xl text-slate-600;
   }
 }
+/* max-w-[69px] */
 
 @layer utilities {
   .sr-only {
