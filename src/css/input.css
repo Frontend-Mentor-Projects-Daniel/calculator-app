@@ -143,7 +143,7 @@
     @apply bg-slate-50;
   }
 
-  @media (min-width: 48rem) {
+  @media (min-width: 31.25rem) {
     .btn {
       @apply text-3xl;
     }
