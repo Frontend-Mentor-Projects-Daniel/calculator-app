@@ -31,7 +31,7 @@
         "allowSyntheticDefaultImports": true,
         "isolatedModules": false,
         // "lib": [] // https://www.typescriptlang.org/tsconfig#lib
-        // "target": "ES3" // can also just use target instead of lib
+        "target": "ES2018" // can also just use target instead of lib
         // COMPILER DIAGNOSTICS
         // "extendedDiagnostics": true,
         // "explainFiles": true
