@@ -16,6 +16,7 @@
 // ------------------------------------------------------------------------
 const calculatorScreen = document.getElementById('js-screen');
 const displayedNumber = calculatorScreen === null || calculatorScreen === void 0 ? void 0 : calculatorScreen.firstElementChild;
+const calculatorButtons = document.querySelectorAll('.btn');
 const numberButtons = document.querySelectorAll('[data-btn-num]');
 const operationButtons = document.querySelectorAll('[data-btn-operations]');
 const resetButton = document.querySelector('[data-btn-reset]');
@@ -65,60 +66,40 @@ if (displayedNumber) {
 else {
     throw new Error("The element in which to display a number doesn't exist");
 }
-// TODO: Look at notes on perhaps a better way to clean this up
-// UPDATE MODEL WHEN A NUMBERED BUTTON IS CLICKED
-numberButtons.forEach((button) => {
+// UPDATE MODEL ON BUTTON CLICK AND RENDER VALUES AND FINAL CALCULATION ON SCREEN
+calculatorButtons.forEach((button) => {
     button.addEventListener('click', (e) => {
-        var _a;
-        const button = e.target;
-        if (button instanceof HTMLButtonElement) {
-            update('appendNumber', init, (_a = button.textContent) === null || _a === void 0 ? void 0 : _a.trim());
-            viewEquation();
+        var _a, _b, _c, _d;
+        const target = e.target;
+        if (target instanceof HTMLButtonElement) {
+            const buttonType = target.dataset.btn;
+            if (buttonType === 'number') {
+                update('appendNumber', init, (_a = button.textContent) === null || _a === void 0 ? void 0 : _a.trim());
+                viewEquation();
+            }
+            if (buttonType === 'operation') {
+                update('appendOperation', init, (_b = button.textContent) === null || _b === void 0 ? void 0 : _b.trim());
+                viewEquation();
+            }
+            if (buttonType === 'decimal') {
+                update('appendDecimal', init, (_c = button.textContent) === null || _c === void 0 ? void 0 : _c.trim());
+                viewEquation();
+            }
+            if (buttonType === 'delete') {
+                update('popPreviousValue', init, '');
+                viewEquation();
+            }
+            if (buttonType === 'reset') {
+                update('clear', init, '');
+                viewEquation();
+            }
+            if (buttonType === 'equals') {
+                update('doCalculation', init, (_d = button.textContent) === null || _d === void 0 ? void 0 : _d.trim());
+                viewEquation();
+            }
         }
     });
 });
-// UPDATE MODEL WHEN AN OPERATION BUTTON IS CLICKED
-operationButtons.forEach((button) => {
-    button.addEventListener('click', (e) => {
-        var _a;
-        const button = e.target;
-        if (button instanceof HTMLButtonElement) {
-            update('appendOperation', init, (_a = button.textContent) === null || _a === void 0 ? void 0 : _a.trim());
-            viewEquation();
-        }
-    });
-});
-// UPDATE MODEL WHEN THE DECIMAL BUTTON IS CLICKED
-decimalButton === null || decimalButton === void 0 ? void 0 : decimalButton.addEventListener('click', (e) => {
-    var _a;
-    const button = e.target;
-    if (button instanceof HTMLButtonElement) {
-        update('appendDecimal', init, (_a = button.textContent) === null || _a === void 0 ? void 0 : _a.trim());
-        viewEquation();
-    }
-});
-// UPDATE MODEL WHEN THE DELETE BUTTON IS CLICKED
-deleteButton === null || deleteButton === void 0 ? void 0 : deleteButton.addEventListener('click', (_) => {
-    update('popPreviousValue', init, '');
-    viewEquation();
-});
-// UPDATE MODEL WHEN THE EQUAL BUTTON IS CLICKED
-equalButton === null || equalButton === void 0 ? void 0 : equalButton.addEventListener('click', (e) => {
-    var _a;
-    const button = e.target;
-    if (button instanceof HTMLButtonElement) {
-        update('doCalculation', init, (_a = button.textContent) === null || _a === void 0 ? void 0 : _a.trim());
-        viewEquation();
-    }
-});
-// UPDATE MODEL WHEN THE RESET BUTTON IS CLICKED
-resetButton === null || resetButton === void 0 ? void 0 : resetButton.addEventListener('click', (_) => {
-    update('clear', init, '');
-    viewEquation();
-});
-// ------------------------------------------------------------------------
-//                               EVENT HANDLERS
-// ------------------------------------------------------------------------
 // ------------------------------------------------------------------------
 //                               VIEW FUNCTIONS
 // ------------------------------------------------------------------------

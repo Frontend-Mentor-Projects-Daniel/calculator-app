@@ -20,6 +20,8 @@
 // ------------------------------------------------------------------------
 const calculatorScreen = document.getElementById('js-screen');
 const displayedNumber = calculatorScreen?.firstElementChild;
+const calculatorButtons = document.querySelectorAll('.btn');
+
 const numberButtons = document.querySelectorAll('[data-btn-num]');
 const operationButtons = document.querySelectorAll('[data-btn-operations]');
 const resetButton = document.querySelector('[data-btn-reset]');
@@ -95,67 +97,45 @@ if (displayedNumber) {
   throw new Error("The element in which to display a number doesn't exist");
 }
 
-// TODO: Look at notes on perhaps a better way to clean this up
-
-// UPDATE MODEL WHEN A NUMBERED BUTTON IS CLICKED
-numberButtons.forEach((button) => {
+// UPDATE MODEL ON BUTTON CLICK AND RENDER VALUES AND FINAL CALCULATION ON SCREEN
+calculatorButtons.forEach((button) => {
   button.addEventListener('click', (e: Event) => {
-    const button = e.target;
+    const target = e.target;
+    if (target instanceof HTMLButtonElement) {
+      const buttonType = target.dataset.btn;
 
-    if (button instanceof HTMLButtonElement) {
-      update('appendNumber', init, button.textContent?.trim());
-      viewEquation();
+      if (buttonType === 'number') {
+        update('appendNumber', init, button.textContent?.trim());
+        viewEquation();
+      }
+
+      if (buttonType === 'operation') {
+        update('appendOperation', init, button.textContent?.trim());
+        viewEquation();
+      }
+
+      if (buttonType === 'decimal') {
+        update('appendDecimal', init, button.textContent?.trim());
+        viewEquation();
+      }
+
+      if (buttonType === 'delete') {
+        update('popPreviousValue', init, '');
+        viewEquation();
+      }
+
+      if (buttonType === 'reset') {
+        update('clear', init, '');
+        viewEquation();
+      }
+
+      if (buttonType === 'equals') {
+        update('doCalculation', init, button.textContent?.trim());
+        viewEquation();
+      }
     }
   });
 });
-
-// UPDATE MODEL WHEN AN OPERATION BUTTON IS CLICKED
-operationButtons.forEach((button) => {
-  button.addEventListener('click', (e: Event) => {
-    const button = e.target;
-
-    if (button instanceof HTMLButtonElement) {
-      update('appendOperation', init, button.textContent?.trim());
-      viewEquation();
-    }
-  });
-});
-
-// UPDATE MODEL WHEN THE DECIMAL BUTTON IS CLICKED
-decimalButton?.addEventListener('click', (e: Event) => {
-  const button = e.target;
-
-  if (button instanceof HTMLButtonElement) {
-    update('appendDecimal', init, button.textContent?.trim());
-    viewEquation();
-  }
-});
-
-// UPDATE MODEL WHEN THE DELETE BUTTON IS CLICKED
-deleteButton?.addEventListener('click', (_: Event) => {
-  update('popPreviousValue', init, '');
-  viewEquation();
-});
-
-// UPDATE MODEL WHEN THE EQUAL BUTTON IS CLICKED
-equalButton?.addEventListener('click', (e: Event) => {
-  const button = e.target;
-
-  if (button instanceof HTMLButtonElement) {
-    update('doCalculation', init, button.textContent?.trim());
-    viewEquation();
-  }
-});
-
-// UPDATE MODEL WHEN THE RESET BUTTON IS CLICKED
-resetButton?.addEventListener('click', (_: Event) => {
-  update('clear', init, '');
-  viewEquation();
-});
-
-// ------------------------------------------------------------------------
-//                               EVENT HANDLERS
-// ------------------------------------------------------------------------
 
 // ------------------------------------------------------------------------
 //                               VIEW FUNCTIONS
