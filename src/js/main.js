@@ -3,41 +3,50 @@
 // -> The value of the calculator screens display ✅
 // When a number or operation button is clicked on
 // -> Some conditions should be checked in order to prevent invalid things (such as two consecutive decimals) ❌
-// -> The value of the button should be appended to the model ✅ ❌
+// -> The value of the button should be appended to the model ✅ ✅
 // When the del button is clicked on
-// -> The model should have its previous value removed ❌
+// -> The model should have its previous value removed ✅
 // When the rest button is clicked on
-// -> The model should be set to 0 ❌
+// -> The model should be set to 0 ✅
 // When the = button is clicked on
-// -> The model should perform some mathematical calculations ❌
-// -> Then it should replace its current value with the result of the calculations ❌
+// -> The model should perform some mathematical calculations ✅
+// -> Then it should replace its current value with the result of the calculations ✅
 // ------------------------------------------------------------------------
 //                          GLOBAL DOM NODES
 // ------------------------------------------------------------------------
 const calculatorScreen = document.getElementById('js-screen');
 const displayedNumber = calculatorScreen === null || calculatorScreen === void 0 ? void 0 : calculatorScreen.firstElementChild;
 const calculatorButtons = document.querySelectorAll('.btn');
-const numberButtons = document.querySelectorAll('[data-btn-num]');
-const operationButtons = document.querySelectorAll('[data-btn-operations]');
-const resetButton = document.querySelector('[data-btn-reset]');
-const deleteButton = document.querySelector('[data-btn-del]');
-const equalButton = document.querySelector('[data-btn-equals]');
-const decimalButton = document.querySelector('[data-btn-decimal]');
 const init = {
     displayedEquation: ['0'],
 };
 function update(msg, model, value) {
+    const lastValue = model.displayedEquation[model.displayedEquation.length - 1];
     switch (msg) {
         case 'appendNumber':
-            if (model.displayedEquation[0] === '0') {
+            // prevent more than one zero from being displayed at the start
+            if (model.displayedEquation[0] === '0' &&
+                model.displayedEquation[1] == null) {
                 model.displayedEquation.pop();
             }
             model.displayedEquation.push(value);
             break;
         case 'appendDecimal':
+            // prevent more than one decimal from appearing
+            const getAllDots = model.displayedEquation.filter((x) => x === '.');
+            if (getAllDots.length === 1) {
+                return;
+            }
             model.displayedEquation.push(value);
             break;
         case 'appendOperation':
+            // prevent 2 operation symbols from being used in a row
+            if (lastValue === '+' ||
+                lastValue === '/' ||
+                lastValue === '-' ||
+                lastValue === 'x') {
+                return;
+            }
             model.displayedEquation.push(value);
             break;
         case 'doCalculation':
@@ -46,6 +55,10 @@ function update(msg, model, value) {
             break;
         case 'popPreviousValue':
             model.displayedEquation.pop();
+            // if deleting the last value then set the screen back to 0
+            if (model.displayedEquation.length === 0) {
+                model.displayedEquation[0] = '0';
+            }
             break;
         case 'clear':
             model.displayedEquation = ['0'];
@@ -114,20 +127,6 @@ function viewEquation() {
 // ------------------------------------------------------------------------
 //                               HELPER FUNCTIONS
 // ------------------------------------------------------------------------
-/**
- * Will return either a float or undefined if the passed in string isn't a number (NaN will also return undefined)
- * @param string - A string to turn into a number
- * @returns A floating point number or undefined
- */
-function convertStringToFloat(string) {
-    const convertedString = parseFloat(string);
-    if (Number.isNaN(convertedString) === false) {
-        return convertedString;
-    }
-    else {
-        return;
-    }
-}
 /**
  * Parses a string equation into a result
  * @param str - An equation
