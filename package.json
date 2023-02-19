@@ -6,7 +6,8 @@
   "scripts": {
     "start-tailwind": "npx tailwindcss -i ./src/css/input.css -o ./src/css/output.css --watch",
     "start-typescript": "tsc --watch",
-    "start": "npm run start-typescript & npm run start-tailwind"
+    "start": "npm run start-typescript & npm run start-tailwind",
+    "gen-docs": "npx typedoc --out docs src/ts/main.ts"
   },
   "repository": {
     "type": "git",

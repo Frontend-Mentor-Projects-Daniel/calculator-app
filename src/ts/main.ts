@@ -145,6 +145,9 @@ calculatorButtons.forEach((button) => {
 // ------------------------------------------------------------------------
 //                               VIEW FUNCTIONS
 // ------------------------------------------------------------------------
+/**
+ * Renders unto the screen a value based on the current global state
+ */
 function viewEquation() {
   if (displayedNumber) {
     displayedNumber.textContent = init.displayedEquation.join('');
