@@ -113,19 +113,42 @@
 }
 
 @layer components {
+  /*--------------------------------------------------------------- 
+                     CALCULATOR BUTTONS 
+---------------------------------------------------------------*/
+
   .btn-group {
-    /* @apply flex flex-wrap justify-between gap-3; */
     display: grid;
     grid-gap: 0.5rem;
     grid-template-columns: repeat(4, minmax(min(50px, 100%), 1fr));
   }
 
+  @media (max-width: 22.5rem) {
+    .btn-group {
+      grid-template-columns: repeat(3, minmax(min(50px, 100%), 1fr));
+    }
+  }
+
+  @media (max-width: 18.75rem) {
+    .btn-group {
+      grid-template-columns: repeat(2, minmax(min(50px, 100%), 1fr));
+    }
+  }
+
   .btn {
-    @apply flex items-center justify-center rounded-md bg-slate-100 p-4 text-xl text-slate-600;
-    /* @apply text-4xl; */
+    @apply flex items-center justify-center rounded-md bg-slate-100 p-4 text-xl text-slate-600 shadow-sm;
+  }
+
+  .btn:active {
+    @apply bg-slate-50;
+  }
+
+  @media (min-width: 48rem) {
+    .btn {
+      @apply text-3xl;
+    }
   }
 }
-/* max-w-[69px] */
 
 @layer utilities {
   .sr-only {
