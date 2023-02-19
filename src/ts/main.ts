@@ -1,20 +1,3 @@
-// What am I modelling?
-// -> The value of the calculator screens display ✅
-
-// When a number or operation button is clicked on
-// -> Some conditions should be checked in order to prevent invalid things (such as two consecutive decimals) ❌
-// -> The value of the button should be appended to the model ✅ ✅
-
-// When the del button is clicked on
-// -> The model should have its previous value removed ✅
-
-// When the rest button is clicked on
-// -> The model should be set to 0 ✅
-
-// When the = button is clicked on
-// -> The model should perform some mathematical calculations ✅
-// -> Then it should replace its current value with the result of the calculations ✅
-
 // ------------------------------------------------------------------------
 //                          GLOBAL DOM NODES
 // ------------------------------------------------------------------------
