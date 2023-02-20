@@ -542,6 +542,32 @@ p,
   isolation: isolate;
 }
 
+/*--------------------------------------------------------------- 
+                     THEME COLOURS 
+---------------------------------------------------------------*/
+
+:root {
+  /* 
+    format: --color-primary: 198deg 93% 60%;
+    */
+  /* TODO: 
+    0) Change variable names
+    1) Turn to hsl 
+    2) Add to tailwind config
+    3) Add to index.html
+    */
+  /* default theme */
+  --clr-bg-slate-300: #cbd5e1;
+  --clr-bg-slate-500: #64748b;
+  --clr-bg-slate-600: #475569;
+  --clr-bg-slate-700: #334155;
+  --clr-text-slate-100: #f1f5f9;
+  --clr-bg-red-400: #f87171;
+  --clr-bg-red-500: #ef4444;
+  /* light theme */
+  /* dark theme */
+}
+
 *, ::before, ::after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
@@ -773,16 +799,16 @@ p,
   margin-right: auto;
 }
 
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
 .ml-auto {
   margin-left: auto;
 }
 
 .mt-9 {
   margin-top: 2.25rem;
-}
-
-.mb-4 {
-  margin-bottom: 1rem;
 }
 
 .flex {

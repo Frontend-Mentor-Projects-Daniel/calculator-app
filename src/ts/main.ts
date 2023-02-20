@@ -4,6 +4,7 @@
 const calculatorScreen = document.getElementById('js-screen');
 const displayedNumber = calculatorScreen?.firstElementChild;
 const calculatorButtons = document.querySelectorAll('.btn');
+const themeRadios = document.querySelectorAll('input[type="radio"]');
 
 // ------------------------------------------------------------------------
 //                               GLOBAL STATE
@@ -141,6 +142,67 @@ calculatorButtons.forEach((button) => {
     }
   });
 });
+
+// SWITCH THEME
+window.addEventListener('load', () => {
+  getTheme();
+});
+
+window
+  .matchMedia('(prefers-color-scheme: dark)')
+  .addEventListener('change', () => {
+    getTheme();
+  });
+
+themeRadios.forEach((radioInput) => {
+  if (radioInput instanceof HTMLInputElement) {
+    radioInput.addEventListener('click', (e: Event) => {
+      setTheme(e);
+      getTheme();
+    });
+  }
+});
+
+function getTheme() {
+  // gets the current theme selected
+  const localTheme = localStorage.theme;
+
+  if (localTheme === 'dark') {
+    // user has manually selected dark mode
+    document.documentElement.classList.add('dark');
+  } else if (localTheme === 'light') {
+    // user has manually selected light mode
+    document.documentElement.classList.remove('dark');
+  } else {
+    // user has not manually selected dark or light
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }
+}
+
+function setTheme(e) {
+  // sets the theme
+  let elem = e.target;
+
+  if (elem.classList.contains('theme-switcher-dark')) {
+    console.log('theme-switcher-dark');
+
+    localStorage.theme = 'dark';
+  } else if (elem.classList.contains('theme-switcher-light')) {
+    console.log('theme-switcher-light');
+
+    localStorage.theme = 'light';
+  } else {
+    localStorage.removeItem('theme');
+  }
+}
+
+function setActive() {
+  // adds active state to the buttons
+}
 
 // ------------------------------------------------------------------------
 //                               VIEW FUNCTIONS
