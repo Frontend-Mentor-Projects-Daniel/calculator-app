@@ -148,6 +148,37 @@
       @apply text-3xl;
     }
   }
+
+  /*--------------------------------------------------------------- 
+                     THEME RADIO INPUTS 
+---------------------------------------------------------------*/
+  .radio-wrapper {
+    position: relative;
+    font-size: 1rem;
+    height: 1rem;
+    width: 1rem;
+  }
+
+  .theme-radio {
+    @apply absolute top-0 right-0 bottom-0 left-0 z-10 m-0 w-full cursor-pointer opacity-0;
+  }
+
+  .theme-span {
+    /* @apply relative -z-[1] w-full; */
+    /* border: 0.2rem solid #51c0a8; */
+    border-radius: 50%;
+    display: block;
+    height: 100%;
+    position: relative;
+    width: 100%;
+    z-index: 1;
+  }
+
+  .theme-radio:checked + span {
+    content: '';
+    background-color: red;
+    position: absolute;
+  }
 }
 
 @layer utilities {

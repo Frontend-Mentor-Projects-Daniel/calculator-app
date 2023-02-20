@@ -52,9 +52,73 @@
         class="mx-auto flex max-w-md flex-col bg-slate-500 px-7 pt-14 pb-11 text-slate-100"
       >
         <!-- title and theme switcher -->
-        <div class="flex items-center justify-between">
+        <div class="mb-4 flex items-center justify-between">
           <h2 class="text-2xl">calc</h2>
-          <p>theme</p>
+          <fieldset class="grid grid-cols-2 items-center">
+            <!-- the legend element doesn't play nice with a lot of css properties so this div is here in order to move it around -->
+            <div class="col-start-1 col-end-2 row-start-2 row-end-3 self-end">
+              <legend class="text-xs uppercase tracking-widest">theme</legend>
+            </div>
+
+            <div class="col-start-2 col-end-3 row-start-2 row-end-3 flex gap-4">
+              <!-- normal theme -->
+              <div class="flex flex-col-reverse justify-self-start">
+                <div class="radio-wrapper">
+                  <input
+                    class="theme-radio"
+                    type="radio"
+                    name="theme"
+                    id="theme-normal"
+                  />
+                  <span class="theme-span" aria-hidden="true"></span>
+                </div>
+                <label
+                  class="mx-auto cursor-pointer text-xs"
+                  aria-label="normal theme"
+                  for="theme-normal"
+                  >1</label
+                >
+              </div>
+
+              <!-- light theme -->
+              <div class="flex flex-col-reverse justify-self-center">
+                <div class="radio-wrapper">
+                  <input
+                    class="theme-radio"
+                    type="radio"
+                    name="theme"
+                    id="theme-light"
+                  />
+                  <span class="theme-span" aria-hidden="true"></span>
+                </div>
+                <label
+                  class="mx-auto cursor-pointer text-xs"
+                  aria-label="light theme"
+                  for="theme-light"
+                  >2</label
+                >
+              </div>
+
+              <!-- dark theme -->
+              <div class="flex flex-col-reverse justify-self-end">
+                <div class="radio-wrapper">
+                  <input
+                    class="theme-radio"
+                    type="radio"
+                    name="theme"
+                    id="theme-dark"
+                  />
+                  <span class="theme-span" aria-hidden="true"></span>
+                </div>
+                <label
+                  class="mx-auto cursor-pointer text-xs"
+                  aria-label="dark theme"
+                  for="theme-dark"
+                  >3</label
+                >
+              </div>
+            </div>
+          </fieldset>
         </div>
 
         <!-- screen -->
