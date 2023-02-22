@@ -49,7 +49,7 @@
             CALCULATOR 
       --------------------- -->
       <div
-        class="mx-auto flex max-w-md flex-col bg-slate-500 px-7 pt-14 pb-11 text-slate-100"
+        class="mx-auto flex max-w-md flex-col bg-calc-500 px-7 pt-14 pb-11 text-calc-100"
       >
         <!-- title and theme switcher -->
         <div class="mb-4 flex items-center justify-between">
@@ -65,10 +65,11 @@
               <div class="flex flex-col-reverse justify-self-start">
                 <div class="radio-wrapper">
                   <input
-                    class="theme-radio"
+                    class="theme-radio theme-switcher-default"
                     type="radio"
                     name="theme"
                     id="theme-normal"
+                    checked="true"
                   />
                   <span class="theme-span" aria-hidden="true"></span>
                 </div>
@@ -124,18 +125,18 @@
         <!-- screen -->
         <div
           id="js-screen"
-          class="flex flex-wrap rounded-md bg-slate-700 py-7 pr-5"
+          class="flex flex-wrap rounded-md bg-calc-700 py-7 pr-5"
         >
           <p class="ml-auto max-w-[363px] text-4xl"></p>
         </div>
 
         <!-- buttons -->
-        <div class="btn-group mt-9 rounded-md bg-slate-600 p-5">
+        <div class="btn-group mt-9 rounded-md bg-calc-600 p-5">
           <button class="btn" data-btn="number">7</button>
           <button class="btn" data-btn="number">8</button>
           <button class="btn" data-btn="number">9</button>
           <button
-            class="btn bg-slate-500 text-slate-100 active:bg-slate-300"
+            class="btn bg-calc-500 text-calc-100 active:bg-calc-300"
             data-btn="delete"
           >
             DEL
@@ -157,13 +158,13 @@
           <button class="btn" data-btn="operation">x</button>
 
           <button
-            class="btn col-span-2 items-center justify-center self-center bg-slate-500 py-4 text-slate-100 active:bg-slate-300"
+            class="btn col-span-2 items-center justify-center self-center bg-calc-500 py-4 text-calc-100 active:bg-calc-300"
             data-btn="reset"
           >
             RESET
           </button>
           <button
-            class="btn col-span-2 items-center justify-center self-center bg-red-500 py-4 text-red-100 active:bg-red-400"
+            class="btn col-span-2 items-center justify-center self-center bg-calc-equals-500 py-4 text-calc-equals-100 active:bg-calc-equals-400"
             data-btn="equals"
           >
             =

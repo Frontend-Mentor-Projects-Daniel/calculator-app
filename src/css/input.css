@@ -116,29 +116,43 @@
 ---------------------------------------------------------------*/
 
   :root {
-    /* 
-    format: --color-primary: 198deg 93% 60%;
-    */
-    /* TODO: 
-    0) Change variable names
-    1) Turn to hsl 
-    2) Add to tailwind config
-    3) Add to index.html
-    */
     /* default theme */
-    --clr-bg-slate-300: #cbd5e1;
-    --clr-bg-slate-500: #64748b;
-    --clr-bg-slate-600: #475569;
-    --clr-bg-slate-700: #334155;
+    --clr-calc-50: 210deg 40% 98%;
+    --clr-calc-100: 210deg 40% 96%;
+    --clr-calc-300: 213deg 27% 84%;
+    --clr-calc-500: 215deg 16% 47%;
+    --clr-calc-600: 215deg 19% 35%;
+    --clr-calc-700: 215deg 25% 27%;
+    --clr-calc-equals-100: 0 93% 94%;
+    --clr-calc-equals-400: 0deg 91% 71%;
+    --clr-calc-equals-500: 0deg 84% 60%;
+  }
 
-    --clr-text-slate-100: #f1f5f9;
+  /* light theme */
+  .theme-light {
+    --clr-calc-50: 110deg 40% 98%;
+    --clr-calc-100: 110deg 40% 96%;
+    --clr-calc-300: 113deg 17% 84%;
+    --clr-calc-500: 115deg 16% 47%;
+    --clr-calc-600: 115deg 19% 35%;
+    --clr-calc-700: 115deg 15% 17%;
+    --clr-calc-equals-100: 0 93% 94%;
+    --clr-calc-equals-400: 0deg 91% 71%;
+    --clr-calc-equals-500: 0deg 84% 60%;
+  }
 
-    --clr-bg-red-400: #f87171;
-    --clr-bg-red-500: #ef4444;
+  /* dark theme */
 
-    /* light theme */
-
-    /* dark theme */
+  .theme-dark {
+    --clr-calc-50: 290deg 40% 98%;
+    --clr-calc-900: 290deg 40% 96%;
+    --clr-calc-300: 293deg 27% 84%;
+    --clr-calc-500: 295deg 96% 47%;
+    --clr-calc-600: 295deg 99% 35%;
+    --clr-calc-700: 295deg 25% 27%;
+    --clr-calc-equals-100: 250deg 93% 94%;
+    --clr-calc-equals-400: 250deg 99% 79%;
+    --clr-calc-equals-500: 250deg 84% 60%;
   }
 }
 

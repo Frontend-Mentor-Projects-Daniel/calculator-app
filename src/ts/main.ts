@@ -143,66 +143,115 @@ calculatorButtons.forEach((button) => {
   });
 });
 
-// SWITCH THEME
-window.addEventListener('load', () => {
-  getTheme();
-});
-
-window
-  .matchMedia('(prefers-color-scheme: dark)')
-  .addEventListener('change', () => {
+// SWITCH THEME AND SAVE THEME TO LOCAL STORAGE WHILE STILL RESPECTING USER-PREFERENCE
+(() => {
+  // load last saved theme
+  window.addEventListener('load', () => {
     getTheme();
   });
 
-themeRadios.forEach((radioInput) => {
-  if (radioInput instanceof HTMLInputElement) {
-    radioInput.addEventListener('click', (e: Event) => {
-      setTheme(e);
+  // check user preferences
+  window
+    .matchMedia('(prefers-color-scheme: dark)')
+    .addEventListener('change', () => {
       getTheme();
     });
-  }
-});
 
-function getTheme() {
-  // gets the current theme selected
-  const localTheme = localStorage.theme;
+  themeRadios.forEach((radioInput) => {
+    if (radioInput instanceof HTMLInputElement) {
+      radioInput.addEventListener('click', (e: Event) => {
+        setTheme(e);
+        getTheme();
+      });
+    }
+  });
 
-  if (localTheme === 'dark') {
-    // user has manually selected dark mode
-    document.documentElement.classList.add('dark');
-  } else if (localTheme === 'light') {
-    // user has manually selected light mode
-    document.documentElement.classList.remove('dark');
-  } else {
-    // user has not manually selected dark or light
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      document.documentElement.classList.add('dark');
+  function getTheme() {
+    // gets the current theme selected
+    const localTheme = localStorage.theme;
+    let selectedInput: string;
+
+    if (localTheme === 'theme-dark') {
+      // user has manually selected dark mode
+      document.documentElement.classList.add('theme-dark');
+      document.documentElement.classList.remove('theme-light');
+      document.documentElement.classList.remove('theme-default');
+
+      selectedInput = 'dark';
+    } else if (localTheme === 'theme-light') {
+      // user has manually selected light mode
+      document.documentElement.classList.remove('theme-dark');
+      document.documentElement.classList.add('theme-light');
+      document.documentElement.classList.remove('theme-default');
+
+      selectedInput = 'light';
+    } else if (localTheme === 'theme-default') {
+      // user has manually selected light mode
+      document.documentElement.classList.remove('theme-dark');
+      document.documentElement.classList.remove('theme-light');
+      document.documentElement.classList.add('theme-default');
+
+      selectedInput = 'default';
     } else {
-      document.documentElement.classList.remove('dark');
+      // user has not manually selected dark or light
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.classList.add('theme-dark');
+        document.documentElement.classList.remove('theme-light');
+        document.documentElement.classList.remove('theme-default');
+
+        selectedInput = 'dark';
+      } else {
+        document.documentElement.classList.add('theme-default');
+        document.documentElement.classList.remove('theme-dark');
+        document.documentElement.classList.remove('theme-light');
+
+        selectedInput = 'default';
+      }
+    }
+
+    setActive(selectedInput);
+  }
+
+  function setTheme(e) {
+    // sets the theme
+    let elem = e.target;
+
+    if (elem.classList.contains('theme-switcher-dark')) {
+      localStorage.theme = 'theme-dark';
+    } else if (elem.classList.contains('theme-switcher-light')) {
+      localStorage.theme = 'theme-light';
+    } else if (elem.classList.contains('theme-switcher-default')) {
+      localStorage.theme = 'theme-default';
+    } else {
+      localStorage.removeItem('theme');
     }
   }
-}
 
-function setTheme(e) {
-  // sets the theme
-  let elem = e.target;
+  function setActive(selectedInput: string) {
+    // adds active state to the buttons
+    const themeSwitcherInputs = document.querySelectorAll(
+      'input[name="theme"]'
+    );
 
-  if (elem.classList.contains('theme-switcher-dark')) {
-    console.log('theme-switcher-dark');
+    themeSwitcherInputs.forEach((input) => {
+      if (input instanceof HTMLInputElement) {
+        const isChecked = input.checked;
 
-    localStorage.theme = 'dark';
-  } else if (elem.classList.contains('theme-switcher-light')) {
-    console.log('theme-switcher-light');
+        if (isChecked === true) {
+          input.checked = false;
+        }
+      }
 
-    localStorage.theme = 'light';
-  } else {
-    localStorage.removeItem('theme');
+      let activeInput = document.querySelector(
+        `.theme-switcher-${selectedInput}`
+      ) as HTMLInputElement;
+
+      console.log(selectedInput);
+
+      activeInput.checked = true;
+    });
   }
-}
-
-function setActive() {
-  // adds active state to the buttons
-}
+})();
 
 // ------------------------------------------------------------------------
 //                               VIEW FUNCTIONS
