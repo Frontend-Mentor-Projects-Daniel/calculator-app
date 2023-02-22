@@ -208,8 +208,6 @@
   }
 
   .theme-span {
-    /* @apply relative -z-[1] w-full; */
-    /* border: 0.2rem solid #51c0a8; */
     border-radius: 50%;
     display: block;
     height: 100%;
@@ -220,7 +218,7 @@
 
   .theme-radio:checked + span {
     content: '';
-    background-color: red;
+    background-color: hsl(var(--clr-calc-equals-500));
     position: absolute;
   }
 }

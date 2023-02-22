@@ -757,8 +757,6 @@ p,
 }
 
 .theme-span {
-  /* @apply relative -z-[1] w-full; */
-  /* border: 0.2rem solid #51c0a8; */
   border-radius: 50%;
   display: block;
   height: 100%;
@@ -769,7 +767,7 @@ p,
 
 .theme-radio:checked + span {
   content: '';
-  background-color: red;
+  background-color: hsl(var(--clr-calc-equals-500));
   position: absolute;
 }
 
@@ -924,6 +922,11 @@ p,
 .bg-calc-equals-500 {
   --tw-bg-opacity: 1;
   background-color: hsl(var(--clr-calc-equals-500) / var(--tw-bg-opacity));
+}
+
+.bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
 .p-5 {
