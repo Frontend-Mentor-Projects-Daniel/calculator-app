@@ -53,11 +53,13 @@
       >
         <!-- title and theme switcher -->
         <div class="mb-4 flex items-center justify-between">
-          <h2 class="text-2xl">calc</h2>
+          <h2 class="text-2xl text-calc-100">calc</h2>
           <fieldset class="grid grid-cols-2 items-center">
             <!-- the legend element doesn't play nice with a lot of css properties so this div is here in order to move it around -->
             <div class="col-start-1 col-end-2 row-start-2 row-end-3 self-end">
-              <legend class="text-xs uppercase tracking-widest">theme</legend>
+              <legend class="text-xs uppercase tracking-widest text-calc-50">
+                theme
+              </legend>
             </div>
 
             <div class="col-start-2 col-end-3 row-start-2 row-end-3 flex gap-4">
@@ -74,7 +76,7 @@
                   <span class="theme-span" aria-hidden="true"></span>
                 </div>
                 <label
-                  class="mx-auto cursor-pointer text-xs"
+                  class="mx-auto cursor-pointer text-xs text-calc-50"
                   aria-label="normal theme"
                   for="theme-normal"
                   >1</label
@@ -93,7 +95,7 @@
                   <span class="theme-span" aria-hidden="true"></span>
                 </div>
                 <label
-                  class="mx-auto cursor-pointer text-xs"
+                  class="mx-auto cursor-pointer text-xs text-calc-50"
                   aria-label="light theme"
                   for="theme-light"
                   >2</label
@@ -112,7 +114,7 @@
                   <span class="theme-span" aria-hidden="true"></span>
                 </div>
                 <label
-                  class="mx-auto cursor-pointer text-xs"
+                  class="mx-auto cursor-pointer text-xs text-calc-50"
                   aria-label="dark theme"
                   for="theme-dark"
                   >3</label
@@ -127,7 +129,7 @@
           id="js-screen"
           class="flex flex-wrap rounded-md bg-calc-700 py-7 pr-5"
         >
-          <p class="ml-auto max-w-[363px] text-4xl"></p>
+          <p class="ml-auto max-w-[363px] text-4xl text-calc-50"></p>
         </div>
 
         <!-- buttons -->
@@ -136,7 +138,7 @@
           <button class="btn" data-btn="number">8</button>
           <button class="btn" data-btn="number">9</button>
           <button
-            class="btn bg-calc-500 text-calc-100 active:bg-calc-300"
+            class="btn bg-calc-500 text-calc-50 active:bg-calc-300"
             data-btn="delete"
           >
             DEL
@@ -158,7 +160,7 @@
           <button class="btn" data-btn="operation">x</button>
 
           <button
-            class="btn col-span-2 items-center justify-center self-center bg-calc-500 py-4 text-calc-100 active:bg-calc-300"
+            class="btn col-span-2 items-center justify-center self-center bg-calc-500 py-4 text-calc-50 active:bg-calc-300"
             data-btn="reset"
           >
             RESET

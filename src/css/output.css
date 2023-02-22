@@ -562,29 +562,29 @@ p,
 /* light theme */
 
 .theme-light {
-  --clr-calc-50: 110deg 40% 98%;
-  --clr-calc-100: 110deg 40% 96%;
-  --clr-calc-300: 113deg 17% 84%;
-  --clr-calc-500: 115deg 16% 47%;
-  --clr-calc-600: 115deg 19% 35%;
-  --clr-calc-700: 115deg 15% 17%;
-  --clr-calc-equals-100: 0 93% 94%;
-  --clr-calc-equals-400: 0deg 91% 71%;
-  --clr-calc-equals-500: 0deg 84% 60%;
+  --clr-calc-50: 33deg 100% 96%;
+  --clr-calc-100: 34deg 100% 92%;
+  --clr-calc-300: 31deg 97% 72%;
+  --clr-calc-500: 25deg 95% 53%;
+  --clr-calc-600: 32deg 95% 44%;
+  --clr-calc-700: 26deg 90% 37%;
+  --clr-calc-equals-100: 48deg 96%, 89%;
+  --clr-calc-equals-400: 43deg 96% 56%;
+  --clr-calc-equals-500: 45deg 93% 47%;
 }
 
 /* dark theme */
 
 .theme-dark {
-  --clr-calc-50: 290deg 40% 98%;
-  --clr-calc-900: 290deg 40% 96%;
-  --clr-calc-300: 293deg 27% 84%;
-  --clr-calc-500: 295deg 96% 47%;
-  --clr-calc-600: 295deg 99% 35%;
-  --clr-calc-700: 295deg 25% 27%;
-  --clr-calc-equals-100: 250deg 93% 94%;
-  --clr-calc-equals-400: 250deg 99% 79%;
-  --clr-calc-equals-500: 250deg 84% 60%;
+  --clr-calc-50: 250deg 100% 98%;
+  --clr-calc-100: 251deg 91% 95%;
+  --clr-calc-300: 252deg 95% 85%;
+  --clr-calc-500: 258deg 90% 66%;
+  --clr-calc-600: 262deg 83% 58%;
+  --clr-calc-700: 263deg 70% 50%;
+  --clr-calc-equals-100: 167deg 85% 89%;
+  --clr-calc-equals-400: 172deg 66% 50%;
+  --clr-calc-equals-500: 173deg 80% 40%;
 }
 
 *, ::before, ::after {
@@ -715,8 +715,8 @@ p,
   line-height: 1.75rem;
   --tw-text-opacity: 1;
   color: rgb(71 85 105 / var(--tw-text-opacity));
-  --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+  --tw-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+  --tw-shadow-colored: inset 0 2px 4px 0 var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
@@ -996,6 +996,11 @@ p,
 .text-calc-100 {
   --tw-text-opacity: 1;
   color: hsl(var(--clr-calc-100) / var(--tw-text-opacity));
+}
+
+.text-calc-50 {
+  --tw-text-opacity: 1;
+  color: hsl(var(--clr-calc-50) / var(--tw-text-opacity));
 }
 
 .text-calc-equals-100 {
